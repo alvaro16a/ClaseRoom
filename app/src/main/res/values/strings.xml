@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">ClaseRoom</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_create">Create</string>
+    <string name="nombre">Digite nombre</string>
+    <string name="telefono">digite telefono</string>
+    <string name="cantidad">Ingrese cantidad</string>
+    <string name="guardar">Guardar</string>
+    <string name="title_read">Read</string>
+    <string name="buscar">Buscar</string>
+    <string name="digite_nombre">Digite nombre</string>
+    <string name="title_update">Update</string>
+    <string name="actualizar">Actualizar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="correo">Correo:</string>
+    <string name="clave">Clave:</string>
+    <string name="I_sesion">INICIAR SESION</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="titulo">FORMULARIO DE REGISTRO</string>
+    <string name="correo2">Digite correo</string>
+    <string name="c_residencia">Ciudad de residencia:</string>
+    <string name="contrasena">Ingrese contraseña</string>
+    <string name="repetir_contrasena">Repita contraseña</string>
+    <string name="contrasena_mal">contraseña errada</string>
+    <string name="Datos_incompletos">Ingrese correo y contraseña</string>
+    <string name="no_existe">El correo no esta registrado</string>
+    <string name="nombre_deudor">Nombre Deudor</string>
+    <string name="lista">List</string>
+    <string name="no_contrasena">Las contraseñas no coinciden o no a introducido una contraseña</string>
+    <string name="correo_usado">El correo ingresado ya esta siendo usado por otro usuario</string>
+    <string name="datos_incompletos">Por favor ingrese todos los datos</string>
+    <string name="usuario_no_existe">El usuario no existe</string>
+    <string name="Usuario_eliminado">Usuario eliminado</string>
+    <string-array name="ciudades">
+        <item>MEDELLIN</item>
+        <item>CALI</item>
+        <item>BOGOTA</item>
+        <item>BARRANQUILLA</item>
+    </string-array>
+</resources>
