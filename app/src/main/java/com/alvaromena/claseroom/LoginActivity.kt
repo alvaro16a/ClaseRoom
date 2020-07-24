@@ -1,51 +1,49 @@
 package com.alvaromena.claseroom
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.alvaromena.claseroom.model.DeudorDAO
-import com.alvaromena.claseroom.model.Usuario
-import com.alvaromena.claseroom.model.UsuarioDAO
+import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
+
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        /*val datosRecibidos = intent.extras
-        val correo = datosRecibidos?.getString("correo")
-        val clave = datosRecibidos?.getString("clave")*/
+        val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
+
         bt_nuevo_usuario.setOnClickListener {
-            onBackPressed()//limpio la pila de actividades para no regresar
-            val intent = Intent(this, RegistroActivity::class.java )
+            val intent = Intent(this, RegistroActivity::class.java)
             startActivity(intent)
         }
 
         bt_inicio_sesion.setOnClickListener {
-            val correo: String
-            val clave :String
-            val clave_in : String
-            correo=et_correo.text.toString()
-            clave_in=et_clave.text.toString()
-            if (correo.isEmpty() || clave_in.isEmpty()) {
-                tv_consola_login.text=getString(R.string.Datos_incompletos)
-            }else{
-                val usuarioDAO: UsuarioDAO = ClaseRoom.database.UsuarioDAO()
-                val usuario = usuarioDAO.validarusuario(correo)
-                if(usuario != null){
-                    clave=usuario.clave
-                    if (clave_in==clave) {
-                        onBackPressed()
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                    }else
-                        tv_consola_login.text=getString(R.string.contrasena_mal)
-                }else{
-                    tv_consola_login.text=getString(R.string.no_existe)
-                }
+            val email = et_correo.text.toString()
+            val password = et_clave.text.toString()
+            if (email.isEmpty() || password.isEmpty()) {
+                tv_consola_login.text = getString(R.string.datos_incompletos)
+            } else {
+                mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this,
+                        OnCompleteListener<AuthResult?> { task ->
+                            if (task.isSuccessful) {
+                                onBackPressed()
+                                startActivity(Intent(this, MainActivity::class.java))
+                            } else {
+                                Toast.makeText(
+                                    this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                Log.w("TAG", "createUserWithEmail:failure", task.exception)
+                            }
+                        })
             }
 
         }
-
     }
 }

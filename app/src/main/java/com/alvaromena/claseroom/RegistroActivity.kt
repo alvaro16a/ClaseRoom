@@ -1,10 +1,10 @@
 package com.alvaromena.claseroom
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.alvaromena.claseroom.model.Usuario
-import com.alvaromena.claseroom.model.UsuarioDAO
+import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_registro.*
 
 
@@ -13,6 +13,7 @@ class RegistroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
+        val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
         bt_guardar.setOnClickListener {
 
@@ -26,21 +27,35 @@ class RegistroActivity : AppCompatActivity() {
                 if (nombre.isEmpty() || email.isEmpty() || cresidencia.isEmpty()) {
                     tv_resultados.text = getString(R.string.datos_incompletos)
                 } else {
-                    val usuario = Usuario(null, nombre, email, cresidencia, clave)
-                    val usuarioDAO: UsuarioDAO = ClaseRoom.database.UsuarioDAO()
-                    val usuario2 = usuarioDAO.validarusuario(email)
-                    if (usuario2 == null) {
-                        usuarioDAO.crearUsuario(usuario)
-                        onBackPressed()
-                        val intent: Intent = Intent(this, LoginActivity::class.java)
-                        startActivity(intent)
-                    } else {
-                        tv_resultados.text = getString(R.string.correo_usado)
-                    }
+                    val password = clave
+
+                    mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(
+                            this
+                        ) { task ->
+                            if (task.isSuccessful) {
+                                //createUsuarioEnBaseDeDatos()
+                                Toast.makeText(
+                                    this, "Registro exitoso.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                onBackPressed()
+                            } else {
+                                Toast.makeText(
+                                    this, "El registro a fallado.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                Log.w("TAG", "createUserWithEmail:failure", task.exception)
+                            }
+                        }
                 }
             } else
                 tv_resultados.text = getString(R.string.no_contrasena)
         }
+    }
+
+    private fun createUsuarioEnBaseDeDatos() {
+        TODO("Not yet implemented")
     }
 }
 

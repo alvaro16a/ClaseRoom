@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "815274729188",
+    "firebase_url": "https://claseroom-1988a.firebaseio.com",
+    "project_id": "claseroom-1988a",
+    "storage_bucket": "claseroom-1988a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815274729188:android:16ffe30e6dd31e1c1056f1",
+        "android_client_info": {
+          "package_name": "com.alvaromena.claseroom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "815274729188-kr4v2h5hq2rkd74pibav8fjupbmedsmp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiJuoZddQN1sKklKK03bVSUK1YtKFam4Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "815274729188-kr4v2h5hq2rkd74pibav8fjupbmedsmp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
