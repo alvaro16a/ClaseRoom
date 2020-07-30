@@ -2,7 +2,7 @@ package com.alvaromena.claseroom
 
 import android.app.Application
 import androidx.room.Room
-import com.alvaromena.claseroom.model.DeudorDaraBase
+import com.alvaromena.claseroom.model.local.DeudorDaraBase
 
 class ClaseRoom : Application() {
     companion object{

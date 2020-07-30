@@ -36,6 +36,9 @@
     <string name="datos_incompletos">Por favor ingrese todos los datos</string>
     <string name="usuario_no_existe">El usuario no existe</string>
     <string name="Usuario_eliminado">Usuario eliminado</string>
+    <string name="cerrar_seccion">Cerrar sesión</string>
+    <string name="salir">Salir</string>
+    <string name="Resultado_read">Resultado busqueda</string>
     <string-array name="ciudades">
         <item>MEDELLIN</item>
         <item>CALI</item>

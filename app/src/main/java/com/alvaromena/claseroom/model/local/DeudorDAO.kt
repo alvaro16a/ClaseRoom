@@ -1,6 +1,5 @@
-package com.alvaromena.claseroom.model
+package com.alvaromena.claseroom.model.local
 
-import androidx.annotation.RequiresPermission
 import androidx.room.*
 
 

@@ -1,35 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.read.ReadFragment">
+    android:layout_height="match_parent">
 
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".ui.read.ReadFragment">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_nombre"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_nombre_read"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:hint="@string/digite_nombre" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/bt_buscar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/digite_nombre" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:background="@color/colorPrimary"
+            android:text="@string/buscar"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/bt_buscar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="@string/buscar"
-        android:textColor="@android:color/white"
-        android:textSize="24sp" />
+        <ImageView
+            android:id="@+id/iv_foto_read"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="16dp"
+            tools:ignore="ContentDescription"
+            tools:src="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tv_resultado"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24sp" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_resultado_read"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/Resultado_read"
+            android:textSize="24sp" />
+    </LinearLayout>
+</ScrollView>

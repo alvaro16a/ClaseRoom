@@ -17,7 +17,7 @@ class RegistroActivity : AppCompatActivity() {
 
         bt_guardar.setOnClickListener {
 
-            val nombre = et_nombre.text.toString()
+            val nombre = et_nombre_update.text.toString()
             val email = et_correo.text.toString()
             val clave = et_clave.text.toString()
             val rclave = et_repetir_clave.text.toString()

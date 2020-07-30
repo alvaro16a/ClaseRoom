@@ -12,14 +12,26 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 
 class LoginActivity : AppCompatActivity() {
+
+    val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
+
+    override fun onStart() {
+        super.onStart()
+        val user = mAuth.currentUser
+        if (user != null) {
+            onBackPressed()
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
+
 
         bt_nuevo_usuario.setOnClickListener {
-            val intent = Intent(this, RegistroActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, RegistroActivity::class.java))
         }
 
         bt_inicio_sesion.setOnClickListener {
@@ -28,22 +40,30 @@ class LoginActivity : AppCompatActivity() {
             if (email.isEmpty() || password.isEmpty()) {
                 tv_consola_login.text = getString(R.string.datos_incompletos)
             } else {
-                mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this,
-                        OnCompleteListener<AuthResult?> { task ->
-                            if (task.isSuccessful) {
-                                onBackPressed()
-                                startActivity(Intent(this, MainActivity::class.java))
-                            } else {
-                                Toast.makeText(
-                                    this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                Log.w("TAG", "createUserWithEmail:failure", task.exception)
-                            }
-                        })
+                singinWhithFireBase(email, password)
             }
 
         }
+    }
+
+    private fun singinWhithFireBase(email: String, password: String) {
+        mAuth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this,
+                OnCompleteListener<AuthResult?> { task ->
+                    if (task.isSuccessful) {
+                        onBackPressed()
+                        startActivity(Intent(this, MainActivity::class.java))
+                    } else {
+                        showMessage("Authentication failed.")
+                        Log.w("TAG", "createUserWithEmail:failure", task.exception)
+                    }
+                })
+    }
+
+    private fun showMessage(msg: String) {
+        Toast.makeText(
+            this, msg,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }

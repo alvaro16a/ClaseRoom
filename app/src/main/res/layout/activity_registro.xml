@@ -60,7 +60,7 @@
 
 
                 <EditText
-                    android:id="@+id/et_nombre"
+                    android:id="@+id/et_nombre_update"
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"

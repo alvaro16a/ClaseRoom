@@ -1,4 +1,4 @@
-package com.alvaromena.claseroom.model
+package com.alvaromena.claseroom.model.local
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
